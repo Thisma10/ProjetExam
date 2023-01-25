@@ -1,0 +1,488 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0 60px 0;
+}
+
+header #logo {
+    width: 130px;
+}
+
+header nav a {
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 40px;
+}
+
+header nav a i {
+    margin-right: 10px;
+}
+
+#burger {
+    display: none;
+}
+
+#close {
+    display: none;
+}
+
+/* MAIN */
+
+main .container {
+    background-color: #333333b9;
+    padding: 40px 40px 20px 40px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+
+main .container h1 {
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+main .container h1 i {
+    margin-right: 10px;
+}
+
+main .container p{
+    margin:10px 0;
+    color:white;
+}
+main .container a.lien{
+    color:white;
+    text-decoration: none;
+    transition:.5s;
+}
+main .container a.lien:hover{
+    /* color:grey;  */
+    text-decoration: underline;
+    /* border-bottom:1px solid grey; */
+}
+
+/* MOVIES */
+
+.movies-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.movies-grid article {
+    width: 32%;
+    background-color: black;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.movies-grid article .image {
+    padding-top: 150%;
+    background-size: cover;
+    background-position: center;
+}
+
+.movies-grid article h3 {
+    color: white;
+    text-transform: uppercase;
+    margin: 20px 0 10px 0;
+}
+
+.movies-grid article p {
+    color: white;
+    margin-bottom: 25px;
+}
+
+.movies-grid article .add {
+    display: inline-block;
+    background-color: #e99822;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+    padding: 10px;
+}
+
+.movies-grid article .add.focus {
+    background: green;
+}
+
+.movies-grid article .trailer {
+    display: inline-block;
+    background-color: blue;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+    padding: 10px;
+}
+
+/* SOCIALS */
+
+aside {
+    position: fixed;
+    top: 15%;
+    left: 30px;
+}
+
+aside div {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+aside div:hover {
+    filter: brightness(50%);
+    cursor: pointer;
+}
+
+aside div.tw {
+    background-color: #2cabe2;
+}
+
+aside div.fb {
+    background-color: #3c5a9a;
+}
+
+aside div.ig {
+    font-size:1.3rem;
+    background:radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); 
+    
+}
+
+aside div.gp {
+    background-color: #bf3526;
+}
+
+aside div.pt {
+    background-color: #c91f27;
+}
+
+aside div.sh {
+    background-color: #1e8854;
+}
+
+aside div a {
+    color: #fff;
+}
+
+/* CONTACT */
+
+.contact-form {
+    padding-top: 40px;
+}
+
+.contact-form input:not(input[type="file"],input[type="submit"])
+ {
+    display: block;
+    height: 40px;
+    width: 100%;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #efefef;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* .contact-form input[type="text"]:focus {
+    outline: 2px solid red;
+} */
+
+.contact-form textarea {
+    display: block;
+    height: 200px;
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #efefef;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.contact-form input[type="submit"],
+.contact-form button[type="submit"],
+a.bouton {
+    display: block;
+    padding: 10px;
+    background-color: #e99822;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    font-size: 16px;
+}
+
+a.bouton {
+   text-decoration:none;
+   width:150px; 
+   text-align:center;
+   margin:20px 0;
+}
+
+/* FIELDSET INSCRIPTION */
+fieldset{    
+    padding:20px;
+    margin-bottom:20px;
+}
+fieldset legend{
+    padding:0 20px;
+    color:white;
+    text-transform: uppercase;
+}
+
+
+/* ORDER */
+
+#orders {
+    margin-top: 40px;
+    width: 100%;
+    color: #fff;
+}
+
+#orders th {
+    text-align: left;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#orders td {
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+/* VIDEO CONTAINER */
+
+#black-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000c7;
+    display: none;
+}
+
+#video-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+/* ERREURS ET SUCCES */
+
+.erreur{
+    margin-top:15px;
+    background:red;
+    color:white;
+    padding:15px;
+}
+.succes{
+    margin-top:15px;
+    background:green;
+    color:white;
+    padding:15px;
+}
+
+/* Pattern du mot de passe */
+.pattern{
+    color:white;
+    margin-bottom:10px;
+}
+
+/*  ADMIN */
+
+#adminfunc{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+}
+
+#adminfunc article{
+    width:200px;
+    height:200px;
+    margin:25px;
+    background: rgba(0,0,0,0.6);
+    color:white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:8px;
+}
+
+#adminfunc article i{
+    font-size:2rem; 
+    margin:15px;
+}
+#adminfunc article a{
+    display:flex;
+    width:100%;
+    height:100%;
+    color:white;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    text-decoration: none;    
+    text-transform: uppercase; 
+    text-align:center;
+}
+
+/* GESTION DES FILMS EN BO ET PANIER */
+#movies, #panier{
+    margin-top:30px;
+    width:100%;
+    color:white;
+    border-collapse:collapse;
+}
+#movies td img, #panier td img{
+    max-width:100%;
+}
+
+.width-20{
+    width:20%;
+}
+
+#movies th, #movies td , #panier th, #panier td{
+    border:1px solid white;
+    padding:10px;
+}
+
+#movies th, #panier th{
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+#movies td, #panier td{
+    text-align:center;
+}
+#movies td a, #panier td a{
+    color:white;
+}
+
+/* FORMULAIRE AJOUT DE FILM */
+#affiche{
+    display:none;
+}
+
+#preview{
+    cursor:pointer;
+    max-width:100%;
+}
+#formmovies{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+}
+.width-50{
+    width:420px; 
+}
+
+
+.enligne{
+    display:flex;
+    justify-content: space-between;    
+}
+
+/*--------------------------- MEDIA QUERIES -------------------------------*/
+
+@media (max-width: 1400px) {
+    aside {
+        position: static;
+        margin-bottom: 40px;
+    }
+
+    aside div {
+        display: inline-flex;
+    }
+}
+
+@media (max-width: 1240px) {
+    .container {
+        width: 90%;
+    }
+
+    nav {
+        position: fixed;
+        width: 60%;
+        height: 100%;
+        background-color: #ffa600f8;
+        top: 0;
+        right: -60%;
+        padding-top: 100px;
+        text-align: center;
+        transition: all 1s;
+    }
+
+    nav.move {
+        right: 0;
+    }
+
+    nav a {
+        display: block;
+        margin: 0 0 20px 0;
+    }
+
+    #burger {
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    #close {
+        display: block;
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 992px) {
+    .movies-grid article {
+        width: 48%;
+    }
+}
+
+@media (max-width: 600px) {
+    .movies-grid article {
+        width: 100%;
+    }
+}
