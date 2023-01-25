@@ -1,0 +1,159 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mer. 25 jan. 2023 à 13:19
+-- Version du serveur : 5.7.40
+-- Version de PHP : 8.0.26
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `marvel`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `clients`
+--
+
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE IF NOT EXISTS `clients` (
+  `id_client` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `date_de_naissance` date NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `login` varchar(50) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `droits` int(11) NOT NULL,
+  PRIMARY KEY (`id_client`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `clients`
+--
+
+INSERT INTO `clients` (`id_client`, `nom`, `prenom`, `date_de_naissance`, `email`, `login`, `mdp`, `droits`) VALUES
+(1, 'Dupont', 'Eric', '1990-04-12', 'eric.dupond@hotmail.com', 'ricou', '9240858e943d7b9e99faa6007fb6d367', 0),
+(2, 'Durand', 'Marie', '1998-06-24', 'mariedurand.gmail.com', 'test', '00a5f964760389d0d4c3136229be4e3e', 0),
+(3, 'parker', 'peter', '2000-07-01', 'spiderman@marvel.fr', 'spiderman', 'ebbb3c8581a4447540a549e76cb74857', 0),
+(4, 'parker', 'peter', '2000-07-01', 'spiderman@marvel.fr', 'spiderman', 'ebbb3c8581a4447540a549e76cb74857', 0),
+(5, 'Monsieur', 'Madame', '2022-12-08', 'test@gamil.com', 'Mathis', '$2y$10$5G3yJDXraG2obSjp8CiNh.ri9V9iUT8Ge11FF1sbxfOf6xEoutyt6', 1),
+(6, 'Mathis2', 'Monsieur', '2022-12-09', 'test2@gmail.com', 'Mathis2', '$2y$10$5G3yJDXraG2obSjp8CiNh.ri9V9iUT8Ge11FF1sbxfOf6xEoutyt6', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commande`
+--
+
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `id_commande` int(11) NOT NULL AUTO_INCREMENT,
+  `id_client` int(11) DEFAULT NULL,
+  `total` float NOT NULL,
+  `date_commande` datetime NOT NULL,
+  PRIMARY KEY (`id_commande`),
+  KEY `id_client` (`id_client`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id_commande`, `id_client`, `total`, `date_commande`) VALUES
+(1, 5, 14.99, '2022-12-27 15:25:19'),
+(2, 5, 14.99, '2022-12-27 15:25:55'),
+(3, 5, 12.99, '2022-12-27 15:26:23'),
+(4, 6, 12.99, '2022-12-27 15:27:10');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `details_commande`
+--
+
+DROP TABLE IF EXISTS `details_commande`;
+CREATE TABLE IF NOT EXISTS `details_commande` (
+  `id_details_commande` int(11) NOT NULL AUTO_INCREMENT,
+  `id_commande` int(11) NOT NULL,
+  `id_film` int(11) DEFAULT NULL,
+  `prix` float NOT NULL,
+  PRIMARY KEY (`id_details_commande`),
+  KEY `id_commande` (`id_commande`),
+  KEY `id_film` (`id_film`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `details_commande`
+--
+
+INSERT INTO `details_commande` (`id_details_commande`, `id_commande`, `id_film`, `prix`) VALUES
+(4, 1, 4, 14.99),
+(5, 2, 3, 14.99),
+(6, 3, 5, 12.99),
+(7, 4, 5, 12.99);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `films`
+--
+
+DROP TABLE IF EXISTS `films`;
+CREATE TABLE IF NOT EXISTS `films` (
+  `id_film` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(150) NOT NULL,
+  `prix` float NOT NULL,
+  `duree` int(11) NOT NULL,
+  `synopsis` text NOT NULL,
+  `annee` year(4) NOT NULL,
+  `realisateur` varchar(50) NOT NULL,
+  `code_yt` varchar(200) NOT NULL,
+  `affiche` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_film`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `films`
+--
+
+INSERT INTO `films` (`id_film`, `titre`, `prix`, `duree`, `synopsis`, `annee`, `realisateur`, `code_yt`, `affiche`) VALUES
+(1, 'Black Panther', 15.99, 135, 'Après les événements qui se sont déroulés dans Captain America : Civil War, T\'Challa revient chez lui prendre sa place sur le trône du Wakanda, une nation africaine technologiquement très avancée mais lorsqu\'un vieil ennemi resurgit, le courage de T\'Challa est mis à rude épreuve, aussi bien en tant que souverain qu\'en tant que Black Panther. Il se retrouve entraîné dans un conflit qui menace non seulement le destin du Wakanda mais celui du monde entier.', 2018, 'Ryan Coogler', 'https://youtu.be/xjDjIWPwcPU', '63aafcf7aaa31_Balck Panther.jpg'),
+(2, 'Avengers: Endgame', 24.99, 182, 'Le Titan Thanos, ayant réussi à s\'approprier les six Pierres d\'Infinité et à les réunir sur le Gantelet doré, a pu réaliser son objectif de pulvériser la moitié de la population de l\'Univers. Cinq ans plus tard, Scott Lang, alias Ant-Man, parvient à s\'échapper de la dimension subatomique où il était coincé. Il propose aux Avengers une solution pour faire revenir à la vie tous les êtres disparus, dont leurs alliés et coéquipiers : récupérer les Pierres d\'Infinité dans le passé.', 2019, 'Anthony Russo, Joe Russo', 'https://youtu.be/bgTlt5-l-AA', '63aafcff2feed_Avengers Endgame.jpg'),
+(3, 'Spider-Man: Far From Home', 14.99, 130, 'L\'araignée sympa du quartier décide de rejoindre ses meilleurs amis Ned, MJ, et le reste de la bande pour des vacances en Europe. Cependant, le projet de Peter de laisser son costume de super-héros derrière lui pendant quelques semaines est rapidement compromis quand il accepte à contrecoeur d\'aider Nick Fury à découvrir le mystère de plusieurs attaques de créatures, qui ravagent le continent !', 2019, 'Jon Watts', 'https://youtu.be/inFIHmGshgk', '63aafce5cdc8f_Spider-man Far From Home.jpg'),
+(4, 'Thor: Love and Thunder', 14.99, 133, 'Thor se lance dans un voyage différent de tout ce qu\'il a connu jusqu\'à présent : une quête de paix intérieure. Cependant, sa retraite est interrompue par Gorr le boucher des dieux, un tueur galactique qui cherche l\'extinction des dieux. Pour combattre la menace, Thor fait appel à l\'aide du roi Valkyrie, de Korg et de Jane Foster. Ensemble, ils se lancent dans une aventure cosmique déchirante pour découvrir le mystère de la vengeance du Boucher des Dieux.', 2022, 'Taika Waititi', 'https://youtu.be/Go8nTmfrQd8', '63aafcdeb94b4_THOR-love-and-thunder.jpg'),
+(5, 'Black Widow', 12.99, 134, 'Lorsqu\'un complot dangereux en lien avec son passé ressurgit, Natasha Romanoff, alias Black Widow, doit y faire face.', 2021, 'Cate Shortland', 'https://youtu.be/RxAtuMu_ph4', '63aafdd7b4531_Black Widow.jpg');
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `commande`
+--
+ALTER TABLE `commande`
+  ADD CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id_client`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `details_commande`
+--
+ALTER TABLE `details_commande`
+  ADD CONSTRAINT `details_commande_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`),
+  ADD CONSTRAINT `details_commande_ibfk_2` FOREIGN KEY (`id_film`) REFERENCES `films` (`id_film`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
