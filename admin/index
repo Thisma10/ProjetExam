@@ -1,0 +1,43 @@
+<?php
+
+require_once('../inc/init.php');
+
+// Si l'utilisateur n'est PAS admin, il est redirigé vers connexion
+if(!isAdmin()){
+    redirect('/connexion.php');
+}
+
+
+$pagetitle = 'Back Office';
+require_once('../inc/header.php');
+?>
+<div class="container">
+    <h1><i class="fas fa-user-cog"></i>Admin</h1>
+
+    <div id="adminfunc">
+        <article>
+            <a href="gestion_films.php">
+             <i class="fas fa-video"></i>
+             Gestion des films
+            </a>
+        </article>
+
+        <article>
+            <a href="gestion_clients.php">
+             <i class="fas fa-users-cog"></i>
+             Gestion des clients
+            </a>
+        </article>
+
+        <article>
+            <a href="gestion_commandes.php">
+             <i class="fas fa-store"></i>
+             Gestion des commandes
+            </a>
+        </article>
+
+    </div>
+
+</div>
+<?php
+require_once('../inc/footer.php');
